@@ -1,3 +1,4 @@
+import java.lang.constant.Constable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,14 +14,22 @@ public class FizzBuzz {
      */
 
     public static void main(String[] args) {
+
+
         FizzBuzz fizzBuzz = new FizzBuzz();
-        System.out.println(fizzBuzz.fizzBuzzGenerator(11));
-    }
+        ArrayList<Integer> generatedList = fizzBuzz.fizzBuzzGenerator(15);
+        System.out.println(generatedList);
 
-    public boolean divisibleBy (int numberInList , int dividingNumber) {
-
-        return numberInList % dividingNumber == 0;
-
+        for (int i = 1; i<= generatedList.size(); i++)
+        {
+            if (fizzBuzz.divisibleBy(i,3) && fizzBuzz.divisibleBy(i,5))
+                System.out.println("FizzBuzz");
+            else if (fizzBuzz.divisibleBy(i,3))
+                System.out.println("Fizz");
+            else if (fizzBuzz.divisibleBy(i,5))
+                System.out.println("Buzz");
+            else System.out.println(i);
+        }
     }
 
     public ArrayList fizzBuzzGenerator (int fizzBuzzSize) {
@@ -34,6 +43,12 @@ public class FizzBuzz {
 
         }
         return generatedList;
+    }
+
+    public boolean divisibleBy (int numberInList, int dividingNumber) {
+
+        return numberInList % dividingNumber == 0;
+
     }
 }
 
