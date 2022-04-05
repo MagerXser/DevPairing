@@ -1,6 +1,4 @@
-import java.lang.constant.Constable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FizzBuzz {
     /*
@@ -15,33 +13,17 @@ public class FizzBuzz {
 
     public static void main(String[] args) {
 
-
         FizzBuzz fizzBuzz = new FizzBuzz();
-        ArrayList<Integer> generatedList = fizzBuzz.fizzBuzzGenerator(15);
-        System.out.println(generatedList);
-
-        for (int i = 1; i<= generatedList.size(); i++)
-        {
-            if (fizzBuzz.divisibleBy(i,3) && fizzBuzz.divisibleBy(i,5))
-                System.out.println("FizzBuzz");
-            else if (fizzBuzz.divisibleBy(i,3))
-                System.out.println("Fizz");
-            else if (fizzBuzz.divisibleBy(i,5))
-                System.out.println("Buzz");
-            else System.out.println(i);
-        }
+        fizzBuzz.fizzBuzzList(15);
     }
 
-    public ArrayList fizzBuzzGenerator (int fizzBuzzSize) {
+    public ArrayList numberGenerator(int fizzBuzzSize) {
 
         ArrayList<Integer> generatedList = new ArrayList<>();
 
         for (int i = 1; i <= fizzBuzzSize; i++)
             generatedList.add(i);
 
-        for (int i = 0; i < generatedList.size(); i++) {
-
-        }
         return generatedList;
     }
 
@@ -49,6 +31,31 @@ public class FizzBuzz {
 
         return numberInList % dividingNumber == 0;
 
+    }
+
+    public String fizzBuzzNumberChecker(int fizzBuzzNumber) {
+
+        if (divisibleBy(fizzBuzzNumber,3) && divisibleBy(fizzBuzzNumber,5))
+            return "FizzBuzz";
+        else if (divisibleBy(fizzBuzzNumber,3))
+            return "Fizz";
+        else if (divisibleBy(fizzBuzzNumber,5))
+            return "Buzz";
+        else
+            return String.valueOf(fizzBuzzNumber);
+    }
+
+    public ArrayList fizzBuzzList(int sizeOfList) {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        ArrayList<String> generatedList = fizzBuzz.numberGenerator(sizeOfList);
+
+        for (int i = 1 ; i <= sizeOfList ; i++) {
+            fizzBuzz.fizzBuzzNumberChecker(i);
+            generatedList.set(i-1,fizzBuzz.fizzBuzzNumberChecker(i));
+
+        }
+        System.out.println(generatedList);
+        return generatedList;
     }
 }
 
